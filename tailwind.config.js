@@ -9,6 +9,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+
+
      
         RobotoRegular: 'Roboto_Regular',
         RobotoExtraBold: 'Roboto-ExtraBold',
@@ -23,6 +25,8 @@ module.exports = {
       },
 
       colors: {
+        primary:'#FF8858',
+        primary:'#FF8858',
         black:'#222325',
         LightBlack:'#374957',
         yellow:'#FF8858',

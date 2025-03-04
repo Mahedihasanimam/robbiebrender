@@ -14,7 +14,7 @@ const MainScreenHeader: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: 15,
-        backgroundColor: '#fff',
+        backgroundColor: '#F2F6F8',
       }}>
       {/* Sidebar Toggle Button */}
       <TouchableOpacity
