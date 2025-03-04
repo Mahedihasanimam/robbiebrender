@@ -1,28 +1,41 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
+import { SvgXml } from 'react-native-svg';
+import { menuicon, Notification } from '../assets/Icons';
 
 const MainScreenHeader: React.FC = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 15, backgroundColor: '#fff' }}>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 15,
+        backgroundColor: '#fff',
+      }}>
       {/* Sidebar Toggle Button */}
-      <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-        <Text style={{ fontSize: 24 }}>☰</Text>
+      <TouchableOpacity
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+        
+        <SvgXml xml={menuicon}/>
       </TouchableOpacity>
 
       {/* Logo */}
-      <Text style={{ fontSize: 18, fontWeight: 'bold', marginLeft: 10 }}>Ray White</Text>
 
-      {/* User Info */}
-      <View style={{ marginLeft: 'auto', flexDirection: 'row', alignItems: 'center' }}>
-        <Text style={{ marginRight: 10 }}>Hi, Imad 👋</Text>
-        <Image
-          source={{ uri: 'https://via.placeholder.com/40' }} // Replace with actual profile image URL
-          style={{ width: 40, height: 40, borderRadius: 20 }}
-        />
+      <View>
+        <Image source={require('../assets/images/Logo.png')} />
       </View>
+
+      
+      <TouchableOpacity
+        onPress={() => navigation.navigate('notification')}>
+          
+          <SvgXml xml={Notification}/>
+        </TouchableOpacity>
+ 
     </View>
   );
 };
