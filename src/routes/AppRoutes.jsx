@@ -6,7 +6,9 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import HomeScreen from "../screens/HomeScreen";
 import SplashScreen from "../screens/SplashScreen";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
+import Notification from "../screens/Notification";
+import MenuItem from "../components/MenuItem";
 
 
 
@@ -27,6 +29,12 @@ const AuthStack = () => (
   >
     <Stack.Screen name="SplashScreen" component={SplashScreen} />
     <Stack.Screen name="HomeScreen" component={HomeScreen} />
+    {/* <Stack.Screen options={{
+      headerShown: false,
+      animation: "fade_from_bottom",
+    presentation : "transparentModal"
+    }} name="Notifications" component={Notification} />
+   */}
    
   </Stack.Navigator>
 );
@@ -35,16 +43,17 @@ const AuthStack = () => (
 const AppRoutes = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        drawerContent={(props) => <Sidebar {...props} />} 
-        screenOptions={{
-          headerShown: false,
-          drawerType: "front", 
-        }}
-      >
-        <Drawer.Screen name="Main" component={AuthStack} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Drawer.Navigator
+      drawerContent={(props) => <Sidebar {...props} />}
+      screenOptions={{
+        headerShown: false,
+        drawerType: "front",
+      }}
+    >
+      <Drawer.Screen name="Main" component={HomeScreen} />
+      {/* <Drawer.Screen name="Notifications" component={Notification} /> */}
+    </Drawer.Navigator>
+  </NavigationContainer>
   );
 };
 

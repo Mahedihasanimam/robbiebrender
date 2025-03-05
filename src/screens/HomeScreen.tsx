@@ -114,9 +114,8 @@ const HomeScreen = () => {
 
       {/* Floating Action Button */}
       <TouchableOpacity style={tw`absolute bottom-10 `}>
-  <SvgXml xml={EditIcon} />
-</TouchableOpacity>
-
+        <SvgXml xml={EditIcon} />
+      </TouchableOpacity>
     </View>
   );
 };
