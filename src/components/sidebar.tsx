@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Modal, FlatList} from 'react-native';
 import {DrawerContentScrollView} from '@react-navigation/drawer';
-import {useNavigation} from '@react-navigation/native';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {SvgXml} from 'react-native-svg';
 
 import tw from '../lib/tailwind';
@@ -72,8 +72,15 @@ const Sidebar: React.FC = () => {
             key={index}
             onPress={() => {
               if (item === 'Notifications') {
-                setNotificationVisible(true); // Show the notification sidebar when clicked
-              } else {
+              navigation?.navigate('Notifications');
+              }
+              else if (item === 'Invite members') {
+                navigation?.navigate('Invite members');
+              }
+              else if (item === 'Settings') {
+                navigation?.navigate('Settings');
+              }
+              else {
                 navigation.navigate(item); // Navigate to other items
               }
             }}>
@@ -95,7 +102,7 @@ const Sidebar: React.FC = () => {
 
       {/* Logout */}
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('SplashScreen')}
         style={{marginTop: 20}}>
         <View style={tw`flex flex-row items-center pl-4`}>
           <Text style={tw`text-[#374957] text-[16px] font-medium`}>
@@ -104,63 +111,7 @@ const Sidebar: React.FC = () => {
         </View>
       </TouchableOpacity>
 
-      {/* Notification Sidebar Modal */}
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isNotificationVisible}>
-        <View style={tw`flex-1 bg-black bg-opacity-50 justify-start `}>
-          <View
-            style={tw`w-[87%] bg-[#F7F9FB]  rounded-r-xl h-full self-start shadow-md`}>
-            {/* Header */}
-            <View
-              style={tw`flex-row justify-between items-center mb-2 bg-white p-4`}>
-              <Text style={tw`text-lg font-bold`}>🔔 Notifications</Text>
-              <TouchableOpacity onPress={() => setNotificationVisible(false)}>
-                <Text style={tw`text-2xl text-gray-500`}>✖</Text>
-              </TouchableOpacity>
-            </View>
-
-            <View style={tw`bg-[#F7F9FB] h-full`}>
-              <FlatList
-                data={notifications}
-                keyExtractor={item => item.id}
-                renderItem={({item}) => (
-                  <TouchableOpacity style={tw``}>
-                    <View style={tw`  m-2 bg-white rounded-lg shadow-md`}>
-                      <View style={tw` p-4 `}>
-                        <Text style={tw`font-bold`}>{item.title}</Text>
-                        <Text style={tw`text-xs text-gray-500 mt-1`}>
-                          {item.category} • {item.time}
-                        </Text>
-                      </View>
-                    </View>
-
-                    <View
-                      style={tw`flex flex-row items-center border-b-2 border-[#EEF2FB] mx-4 mb-4 `}>
-                      <View style={tw`flex flex-row items-center gap-2 py-4`}>
-                        <SvgXml xml={MessageIcon} />
-                        <Text style={tw`text-[12px] text-[#84909A]`}>
-                          Bathrooms & Plumbing
-                        </Text>
-                      </View>
-
-                      <View style={tw`flex flex-row items-center gap-2  `}>
-                        <Text style={tw`text-[12px] text-[#717B7D] font-bold`}>
-                          Today
-                        </Text>
-                        <Text style={tw`text-[12px] text-[#717B7D]`}>
-                          1:56PM
-                        </Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                )}
-              />
-            </View>
-          </View>
-        </View>
-      </Modal>
+   
     </DrawerContentScrollView>
   );
 };

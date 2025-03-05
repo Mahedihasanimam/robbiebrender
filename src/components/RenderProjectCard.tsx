@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {CalenderIcon, downArrowIcon, ImageStack, Upicon} from '../assets/Icons';
 import tw from '../lib/tailwind';
+import { useNavigation } from '@react-navigation/native';
 
 // Project item type definition
 interface ProjectItem {
@@ -25,6 +26,7 @@ interface RenderProjectCardProps {
 const RenderProjectCard: React.FC<RenderProjectCardProps> = ({item}) => {
   const [expanded, setExpanded] = useState<{[key: string]: boolean}>({});
 
+  const Navigation = useNavigation<any>();
   const toggleExpand = (id: string) => {
     setExpanded(prev => ({...prev, [id]: !prev[id]}));
   };
@@ -32,7 +34,9 @@ const RenderProjectCard: React.FC<RenderProjectCardProps> = ({item}) => {
   const isExpanded = expanded[item.id] || false;
 
   return (
-    <TouchableOpacity onPress={() => toggleExpand(item.id)} style={tw` mb-4 rounded-lg `}>
+    <TouchableOpacity
+      onPress={() => toggleExpand(item.id)}
+      style={tw` mb-4 rounded-lg `}>
       {/* Card Header */}
       <View
         style={tw`flex-row justify-between items-start bg-white p-4 rounded-sm`}>
@@ -84,48 +88,47 @@ const RenderProjectCard: React.FC<RenderProjectCardProps> = ({item}) => {
 
       <View style={tw``}>
         {isExpanded && (
-
-            <View>
-
-          <View style={tw`bg-white rounded-sm   my-2  border-gray p-4 `}>
-            <View style={tw`flex-row justify-between items-center`}>
-              <Text style={tw`text-lg font-bold text-black`}>
-                Architects & Planners
-              </Text>
-              <View style={tw`flex-row items-center`}>
-                <View
-                  style={tw`bg-primary h-6 w-10 mr-4 rounded-full items-center justify-center`}>
-                  <Text style={tw`text-white text-xs font-medium`}>2</Text>
+          <View>
+            <TouchableOpacity onPress={() =>Navigation.navigate('ChatingScreen')}  style={tw`bg-white rounded-sm   my-2  border-gray p-4 `}>
+              <View style={tw`flex-row justify-between items-center`}>
+                <Text style={tw`text-lg font-bold text-black`}>
+                  Architects & Planners
+                </Text>
+                <View style={tw`flex-row items-center`}>
+                  <View
+                    style={tw`bg-primary h-6 w-10 mr-4 rounded-full items-center justify-center`}>
+                    <Text style={tw`text-white text-xs font-medium`}>2</Text>
+                  </View>
                 </View>
               </View>
-            </View>
-            <View style={tw`flex-row items-center  `}>
-              <SvgXml xml={ImageStack} />
-              <Text style={tw`text-gray- ml-2`}>
-                John Miur, Bob Appleseed, Anna Lee
-              </Text>
-            </View>
-          </View>
-          <View style={tw`bg-white rounded-sm   mb-2  border-gray p-4 `}>
-            <View style={tw`flex-row justify-between items-center`}>
-              <Text style={tw`text-lg font-bold text-black`}>
-                Architects & Planners
-              </Text>
-              <View style={tw`flex-row items-center`}>
-                <View
-                  style={tw`bg-primary h-6 w-10 mr-4 rounded-full items-center justify-center`}>
-                  <Text style={tw`text-white text-xs font-medium`}>2</Text>
+              <View style={tw`flex-row items-center  `}>
+                <SvgXml xml={ImageStack} />
+                <Text style={tw`text-gray- ml-2`}>
+                  John Miur, Bob Appleseed, Anna Lee
+                </Text>
+              </View>
+            </TouchableOpacity>
+            
+            <TouchableOpacity onPress={() =>Navigation.navigate('ChatingScreen')} style={tw`bg-white rounded-sm   mb-2  border-gray p-4 `}>
+              <View style={tw`flex-row justify-between items-center`}>
+                <Text style={tw`text-lg font-bold text-black`}>
+                  Architects & Planners
+                </Text>
+                <View style={tw`flex-row items-center`}>
+                  <View
+                    style={tw`bg-primary h-6 w-10 mr-4 rounded-full items-center justify-center`}>
+                    <Text style={tw`text-white text-xs font-medium`}>2</Text>
+                  </View>
                 </View>
               </View>
-            </View>
-            <View style={tw`flex-row items-center  `}>
-              <SvgXml xml={ImageStack} />
-              <Text style={tw`text-gray- ml-2`}>
-                John Miur, Bob Appleseed, Anna Lee
-              </Text>
-            </View>
+              <View style={tw`flex-row items-center  `}>
+                <SvgXml xml={ImageStack} />
+                <Text style={tw`text-gray- ml-2`}>
+                  John Miur, Bob Appleseed, Anna Lee
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
-            </View>
         )}
       </View>
 

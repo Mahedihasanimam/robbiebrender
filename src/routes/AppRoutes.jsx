@@ -9,6 +9,7 @@ import SplashScreen from "../screens/SplashScreen";
 import Sidebar from "../components/Sidebar";
 import Notification from "../screens/Notification";
 import MenuItem from "../components/MenuItem";
+import ChatingScreen from "../screens/ChatingScreen";
 
 
 
@@ -29,12 +30,14 @@ const AuthStack = () => (
   >
     <Stack.Screen name="SplashScreen" component={SplashScreen} />
     <Stack.Screen name="HomeScreen" component={HomeScreen} />
-    {/* <Stack.Screen options={{
-      headerShown: false,
-      animation: "fade_from_bottom",
-    presentation : "transparentModal"
+    <Stack.Screen name="ChatingScreen" component={ChatingScreen} />
+    <Stack.Screen options={{
+    
+      animation: "slide_from_left",
+    presentation : "transparentModal",
+      
     }} name="Notifications" component={Notification} />
-   */}
+  
    
   </Stack.Navigator>
 );
@@ -50,7 +53,7 @@ const AppRoutes = () => {
         drawerType: "front",
       }}
     >
-      <Drawer.Screen name="Main" component={HomeScreen} />
+      <Drawer.Screen name="Main" component={AuthStack} />
       {/* <Drawer.Screen name="Notifications" component={Notification} /> */}
     </Drawer.Navigator>
   </NavigationContainer>

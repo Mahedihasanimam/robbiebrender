@@ -31,7 +31,7 @@ const MainScreenHeader: React.FC = () => {
 
       
       <TouchableOpacity
-        onPress={() => navigation.navigate('notification')}>
+        onPress={() => navigation.navigate('Notifications')}>
           
           <SvgXml xml={Notification}/>
         </TouchableOpacity>
