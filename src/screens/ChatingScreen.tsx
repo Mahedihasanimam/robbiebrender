@@ -109,15 +109,23 @@ const ChatingScreen: React.FC = () => {
           onLayout={() => flatListRef.current?.scrollToEnd({animated: true})}
         />
       )}
+
+      {/* FILES TABS ------------------- */}
       {activeTab === 'Files' && (
         <Files/>
       )}
+
+      {/* QUOTES TABS ------------------- */}
       {activeTab === 'Quotes' && (
         <Quotes/>
       )}
+
+      {/* INVOICES TABS ------------------- */}
       {activeTab === 'Invoices' && (
         <Invoices/>
       )}
+
+      {/* SOME TABS ------------------- */}
       {activeTab === 'Some' && (
        <Some/>
       )}

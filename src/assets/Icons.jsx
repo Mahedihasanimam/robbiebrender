@@ -183,3 +183,15 @@ export const Variation =  `<svg width="20" height="20" viewBox="0 0 20 20" fill=
 </svg>
 
 `
+export const FileIcon =  `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="36" height="36" rx="4" fill="#F2F6F8"/>
+<mask id="mask0_68_1127" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="6" y="6" width="24" height="24">
+<rect x="6" y="6" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_68_1127)">
+<path d="M14 24H22V22H14V24ZM14 20H22V18H14V20ZM12 28C11.45 28 10.9792 27.8042 10.5875 27.4125C10.1958 27.0208 10 26.55 10 26V10C10 9.45 10.1958 8.97917 10.5875 8.5875C10.9792 8.19583 11.45 8 12 8H20L26 14V26C26 26.55 25.8042 27.0208 25.4125 27.4125C25.0208 27.8042 24.55 28 24 28H12ZM19 15V10H12V26H24V15H19Z" fill="#FF8858"/>
+</g>
+</svg>
+
+
+`
