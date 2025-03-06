@@ -160,3 +160,26 @@ export const UserPlus = `<svg width="20" height="20" viewBox="0 0 20 20" fill="n
 
 
 `
+
+export const saveicon =  `<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="22" cy="22" r="22" fill="white"/>
+<mask id="mask0_68_1709" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="9" y="9" width="26" height="26">
+<rect x="9" y="9" width="26" height="26" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_68_1709)">
+<path d="M19.3457 28.5L13.1707 22.325L14.7144 20.7812L19.3457 25.4125L29.2852 15.4729L30.829 17.0167L19.3457 28.5Z" fill="#FF8858"/>
+</g>
+</svg>
+`
+export const Combine =  `<svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.1109 4.1106V12.055L20.0554 19.9995M9.94428 14.2217L7.05539 17.1106L4.1665 19.9995" stroke="#FF8858" stroke-width="2"/>
+<path d="M12.1108 2.44434L17.1145 8.94434H7.10708L12.1108 2.44434Z" fill="#FF8858"/>
+</svg>
+
+`
+export const Variation =  `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="5.86816" y="1" width="13.1323" height="13.1323" rx="1" stroke="#FF8858" stroke-width="2"/>
+<path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd" d="M6.0319 4.86768H2C0.895431 4.86768 0 5.76311 0 6.86768V18C0 19.1045 0.895432 20 2 20H13.1323C14.2368 20 15.1323 19.1045 15.1323 17.9999V13.9682H7.0319C6.47962 13.9682 6.0319 13.5205 6.0319 12.9682V4.86768Z" fill="#FF8858"/>
+</svg>
+
+`
