@@ -195,3 +195,31 @@ export const FileIcon =  `<svg width="36" height="36" viewBox="0 0 36 36" fill="
 
 
 `
+export const RightArrow =  `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_68_2125" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+<rect width="20" height="20" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_68_2125)">
+<path d="M12.625 16L11.5625 14.9375L14.125 12.375H6.5C5.52778 12.375 4.70139 12.0347 4.02083 11.3542C3.34028 10.6736 3 9.84722 3 8.875C3 7.90278 3.34028 7.07639 4.02083 6.39583C4.70139 5.71528 5.52778 5.375 6.5 5.375H7V6.875H6.5C5.94 6.875 5.46667 7.06785 5.08 7.45354C4.69333 7.83938 4.5 8.3116 4.5 8.87021C4.5 9.42896 4.69333 9.90278 5.08 10.2917C5.46667 10.6806 5.94 10.875 6.5 10.875H14.125L11.5625 8.3125L12.625 7.25L17 11.625L12.625 16Z" fill="#FF8858"/>
+</g>
+</svg>
+
+
+`
+export const backIcon =  `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.19305 0.357966L0.360484 8.1358C-0.120162 8.61308 -0.120162 9.38692 0.360484 9.8642L8.19305 17.642C8.6737 18.1193 9.45298 18.1193 9.93362 17.642C10.4143 17.1647 10.4143 16.3909 9.93362 15.9136L4.20211 10.2222L16.7692 10.2222C17.449 10.2222 18 9.67498 18 9C18 8.32501 17.449 7.77783 16.7692 7.77783L4.20211 7.77783L9.93362 2.08637C10.4143 1.60909 10.4143 0.835252 9.93362 0.357966C9.45298 -0.119321 8.6737 -0.119321 8.19305 0.357966Z" fill="#A8B4B7"/>
+</svg>
+
+
+
+`
+export const Threedote =  `<svg width="17" height="4" viewBox="0 0 17 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="1.5" cy="2" r="1.5" fill="#B8C2C4"/>
+<circle cx="8.5" cy="2" r="1.5" fill="#B8C2C4"/>
+<circle cx="15.5" cy="2" r="1.5" fill="#B8C2C4"/>
+</svg>
+
+
+
+
+`

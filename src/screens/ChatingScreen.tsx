@@ -15,6 +15,7 @@ import Files from './chatingTabs/Files';
 import Quotes from './chatingTabs/Quotes';
 import Invoices from './chatingTabs/Invoices';
 import Some from './chatingTabs/Some';
+import TabsscreenHeader from '../components/TabsscreenHeader';
 
 interface Message {
   id: string;
@@ -71,10 +72,7 @@ const ChatingScreen: React.FC = () => {
   return (
     <View style={tw`flex-1 bg-[#F9FBFB]`}>
       {/* Header */}
-      <View
-        style={tw`flex-row justify-between items-center px-4 py-3 bg-gray-100`}>
-        <Text style={tw`text-lg font-bold`}>Bathrooms & Plumbing</Text>
-      </View>
+      <TabsscreenHeader title={'Bathrooms & Plumbing'} showMenu={false} />
 
       {/* Tabs */}
       <View style={tw`flex-row border-b border-gray-300`}>
