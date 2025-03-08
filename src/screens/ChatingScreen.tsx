@@ -9,7 +9,16 @@ import {
 } from 'react-native';
 import tw from 'twrnc';
 import {SvgXml} from 'react-native-svg';
-import {downArrowIcon, EditIcon, SendIcon, UserIcon, UserPlus} from '../assets/Icons';
+import {
+  avater,
+  chakedChakmark,
+  downArrowIcon,
+  EditIcon,
+  SendIcon,
+  unchakedChakmark,
+  UserIcon,
+  UserPlus,
+} from '../assets/Icons';
 import {useNavigation} from '@react-navigation/native';
 import Files from './chatingTabs/Files';
 import Quotes from './chatingTabs/Quotes';
@@ -31,7 +40,10 @@ const ChatingScreen: React.FC = () => {
   const [newMessage, setNewMessage] = useState<string>('');
   const [selectedUser, setSelectedUser] = useState<string>('John');
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [NewchatmodalVisible, setcreatechatModalVisible] =
+    useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>('Chat');
+  const [isChecked, setIsChecked] = useState(false);
   const flatListRef = useRef<FlatList>(null);
   const navigation = useNavigation();
   useEffect(() => {
@@ -57,6 +69,11 @@ const ChatingScreen: React.FC = () => {
       {id: '3', text: 'Sure! What seems to be the issue?', sender: 'John'},
     ]);
   }, []);
+
+  const hndlecreatechat = () => {
+    setModalVisible(false);
+    setcreatechatModalVisible(true);
+  };
 
   const renderItem = ({item}: {item: Message}) => (
     <View
@@ -109,24 +126,16 @@ const ChatingScreen: React.FC = () => {
       )}
 
       {/* FILES TABS ------------------- */}
-      {activeTab === 'Files' && (
-        <Files/>
-      )}
+      {activeTab === 'Files' && <Files />}
 
       {/* QUOTES TABS ------------------- */}
-      {activeTab === 'Quotes' && (
-        <Quotes/>
-      )}
+      {activeTab === 'Quotes' && <Quotes />}
 
       {/* INVOICES TABS ------------------- */}
-      {activeTab === 'Invoices' && (
-        <Invoices/>
-      )}
+      {activeTab === 'Invoices' && <Invoices />}
 
       {/* SOME TABS ------------------- */}
-      {activeTab === 'Some' && (
-       <Some/>
-      )}
+      {activeTab === 'Some' && <Some />}
 
       {/* Bottom Input */}
       {activeTab === 'Chat' && (
@@ -165,9 +174,12 @@ const ChatingScreen: React.FC = () => {
         animationType="slide"
         onRequestClose={() => setModalVisible(false)}>
         <View style={tw`flex-1 justify-end items-start `}>
-          <View style={tw`bg-white border border-[#F9FBFB] shadow-lg p-5 rounded-t-3xl w-full`}>
+          <View
+            style={tw`bg-white border border-[#F9FBFB] shadow-lg p-5 rounded-t-3xl w-full`}>
             <View style={tw`flex flex-row items-center  justify-between`}>
-              <Text style={tw` text-[#A8B4B7] font-semibold text-sm`}>Message to</Text>
+              <Text style={tw` text-[#A8B4B7] font-semibold text-sm`}>
+                Message to
+              </Text>
               <TouchableOpacity onPress={() => setModalVisible(false)}>
                 <Text style={tw`text-2xl text-[#202F3A]`}>✖</Text>
               </TouchableOpacity>
@@ -182,34 +194,132 @@ const ChatingScreen: React.FC = () => {
               </View>
               <View style={tw` flex flex-row  pb-4 `}>
                 <SvgXml xml={UserIcon} />
-                <Text style={tw`text-[#202F3A] ml-2`}>
-                John, Marta
-                </Text>
+                <Text style={tw`text-[#202F3A] ml-2`}>John, Marta</Text>
               </View>
-              <View style={tw` flex flex-row  pb-4 border-b-2 border-[#EEF3F6] `}>
+              <View
+                style={tw` flex flex-row  pb-4 border-b-2 border-[#EEF3F6] `}>
                 <SvgXml xml={UserIcon} />
-                <Text style={tw`text-[#202F3A] ml-2`}>
-                John
-                </Text>
+                <Text style={tw`text-[#202F3A] ml-2`}>John</Text>
               </View>
 
-
-
-              <TouchableOpacity style={tw` flex flex-row  pt-8 pb-4  border-b-2 border-[#EEF3F6]`}>
+              <TouchableOpacity
+                onPress={hndlecreatechat}
+                style={tw` flex flex-row  pt-8 pb-4  border-b-2 border-[#EEF3F6]`}>
                 <SvgXml xml={UserPlus} />
                 <Text style={tw`text-[#FF8858] text-[16px] font-medium ml-2`}>
-               Create new chat
+                  Create new chat
                 </Text>
               </TouchableOpacity>
 
-
               <TouchableOpacity>
-                <Text style={tw`text-[#FF3743] text-[16px] font-medium pt-8 pb-4 `}>Archive chat</Text>
+                <Text
+                  style={tw`text-[#FF3743] text-[16px] font-medium pt-8 pb-4 `}>
+                  Archive chat
+                </Text>
               </TouchableOpacity>
-
-
-              
             </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* CREATE NEW CHATMODAL ---------------- */}
+
+      <Modal
+        visible={NewchatmodalVisible}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setcreatechatModalVisible(false)}>
+        <View style={tw`flex-1 justify-end items-start `}>
+          <View
+            style={tw`bg-white border border-[#F9FBFB] shadow-lg p-5 rounded-t-3xl w-full`}>
+            <View style={tw`flex flex-row items-center  justify-between`}>
+              <Text style={tw` text-[#A8B4B7] font-semibold text-sm`}>
+                Create new chat with
+              </Text>
+              <TouchableOpacity
+                onPress={() => setcreatechatModalVisible(false)}>
+                <Text style={tw`text-2xl text-[#202F3A]`}>✖</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={tw`flex flex-row items-center justify-between mt-4`}>
+              <View style={tw`flex flex-row gap-2 py-2`}>
+                <SvgXml xml={avater} />
+                <Text style={tw`text-[#202F3A] ml-2`}>John Appleseed</Text>
+              </View>
+              <View style={tw`flex-row items-center`}>
+                <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
+                  {isChecked ? (
+                    <SvgXml xml={chakedChakmark} />
+                  ) : (
+                    <SvgXml xml={unchakedChakmark} />
+                  )}
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={tw`flex flex-row items-center justify-between`}>
+              <View style={tw`flex flex-row gap-2 py-2`}>
+                <SvgXml xml={avater} />
+                <Text style={tw`text-[#202F3A] ml-2`}>John Appleseed</Text>
+              </View>
+              <View style={tw`flex-row items-center`}>
+                <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
+                  {isChecked ? (
+                    <SvgXml xml={chakedChakmark} />
+                  ) : (
+                    <SvgXml xml={unchakedChakmark} />
+                  )}
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={tw`flex flex-row items-center justify-between`}>
+              <View style={tw`flex flex-row gap-2 py-2`}>
+                <SvgXml xml={avater} />
+                <Text style={tw`text-[#202F3A] ml-2`}>John Appleseed</Text>
+              </View>
+              <View style={tw`flex-row items-center`}>
+                <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
+                  {isChecked ? (
+                    <SvgXml xml={chakedChakmark} />
+                  ) : (
+                    <SvgXml xml={unchakedChakmark} />
+                  )}
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={tw`flex flex-row items-center justify-between`}>
+              <View style={tw`flex flex-row gap-2 py-2`}>
+                <SvgXml xml={avater} />
+                <Text style={tw`text-[#202F3A] ml-2`}>John Appleseed</Text>
+              </View>
+              <View style={tw`flex-row items-center`}>
+                <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
+                  {isChecked ? (
+                    <SvgXml xml={chakedChakmark} />
+                  ) : (
+                    <SvgXml xml={unchakedChakmark} />
+                  )}
+                </TouchableOpacity>
+              </View>
+            </View>
+
+
+            <TouchableOpacity
+              style={tw`bg-[#FF8858] flex flex-row items-center justify-center p-3 rounded-sm mt-8`}>
+             
+              <Text style={tw`text-white text-[16px] font-medium ml-2`}>
+              Create chat
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={tw` flex flex-row items-center justify-center p-3 rounded-sm mt-4`}>
+              <SvgXml xml={UserPlus} />
+              <Text style={tw`text-[#FF8858] text-[16px] font-medium ml-2`}>
+              Invite new member
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
