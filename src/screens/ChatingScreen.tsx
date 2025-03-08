@@ -40,8 +40,7 @@ const ChatingScreen: React.FC = () => {
   const [newMessage, setNewMessage] = useState<string>('');
   const [selectedUser, setSelectedUser] = useState<string>('John');
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [NewchatmodalVisible, setcreatechatModalVisible] =
-    useState<boolean>(false);
+  const [NewchatmodalVisible, setcreatechatModalVisible] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>('Chat');
   const [isChecked, setIsChecked] = useState(false);
   const flatListRef = useRef<FlatList>(null);
@@ -261,7 +260,7 @@ const ChatingScreen: React.FC = () => {
             <View style={tw`flex flex-row items-center justify-between`}>
               <View style={tw`flex flex-row gap-2 py-2`}>
                 <SvgXml xml={avater} />
-                <Text style={tw`text-[#202F3A] ml-2`}>John Appleseed</Text>
+                <Text style={tw`text-[#202F3A] ml-2`}>Marta Dobson</Text>
               </View>
               <View style={tw`flex-row items-center`}>
                 <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
@@ -276,7 +275,7 @@ const ChatingScreen: React.FC = () => {
             <View style={tw`flex flex-row items-center justify-between`}>
               <View style={tw`flex flex-row gap-2 py-2`}>
                 <SvgXml xml={avater} />
-                <Text style={tw`text-[#202F3A] ml-2`}>John Appleseed</Text>
+                <Text style={tw`text-[#202F3A] ml-2`}>Thomas Mitchell</Text>
               </View>
               <View style={tw`flex-row items-center`}>
                 <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
@@ -292,7 +291,7 @@ const ChatingScreen: React.FC = () => {
             <View style={tw`flex flex-row items-center justify-between`}>
               <View style={tw`flex flex-row gap-2 py-2`}>
                 <SvgXml xml={avater} />
-                <Text style={tw`text-[#202F3A] ml-2`}>John Appleseed</Text>
+                <Text style={tw`text-[#202F3A] ml-2`}>Robert Lee</Text>
               </View>
               <View style={tw`flex-row items-center`}>
                 <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
