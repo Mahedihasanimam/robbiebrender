@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Modal} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import tw from 'twrnc';
-import {avater, backIcon, chakedChakmark, seetingIcon, seetingIcongray, Threedote, unchakedChakmark, UserIcon, UserPlus, UserPlusgray} from '../assets/Icons';
+import {
+  avater,
+  backIcon,
+  chakedChakmark,
+  seetingIcon,
+  seetingIcongray,
+  Threedote,
+  unchakedChakmark,
+  UserIcon,
+  UserPlus,
+  UserPlusgray,
+} from '../assets/Icons';
 import {useNavigation} from '@react-navigation/native';
 
 interface HeaderProps {
@@ -20,6 +31,7 @@ const TabsscreenHeader: React.FC<HeaderProps> = ({
 }) => {
   const navigateion = useNavigation();
   const [seetingmodal, setseetingmodal] = useState<boolean>(false);
+  const [taskseetingmodal, settaskseetingmodal] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState(false);
   return (
     <View
@@ -45,14 +57,15 @@ const TabsscreenHeader: React.FC<HeaderProps> = ({
           style={tw`w-10 h-10 justify-center items-center ${
             showMenu ? '' : 'invisible'
           }`}
-          onPress={onMenuPress}>
-          <SvgXml xml={UserPlusgray } />
+          onPress={() => setseetingmodal(true)}>
+          <SvgXml xml={UserPlusgray} />
         </TouchableOpacity>
+
         <TouchableOpacity
+          onPress={() => settaskseetingmodal(true)}
           style={tw`w-10 h-10 justify-center items-center ${
             showMenu ? '' : 'invisible'
-          }`}
-          onPress={() => setseetingmodal(true)}>
+          }`}>
           <SvgXml xml={seetingIcongray} />
         </TouchableOpacity>
       </View>
@@ -67,28 +80,28 @@ const TabsscreenHeader: React.FC<HeaderProps> = ({
             style={tw`bg-white border border-[#F9FBFB] shadow-lg p-5 rounded-t-3xl w-full`}>
             <View style={tw`flex flex-row items-center  justify-between`}>
               <Text style={tw` text-[#A8B4B7] font-semibold text-sm`}>
-              Quick add users
+                Quick add users
               </Text>
-              <TouchableOpacity
-                onPress={() => setseetingmodal(false)}>
+              <TouchableOpacity onPress={() => setseetingmodal(false)}>
                 <Text style={tw`text-2xl text-[#202F3A]`}>✖</Text>
               </TouchableOpacity>
             </View>
 
             <View style={tw`flex flex-row items-center justify-center gap-4`}>
-              <TouchableOpacity style={tw`bg-[#374957] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
-                <Text style={tw`text-white font-semibold text-base`}>
-                Team
+              <TouchableOpacity
+                style={tw`bg-[#374957] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
+                <Text style={tw`text-white font-semibold text-base`}>Team</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={tw`bg-[#EEF3F6] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
+                <Text style={tw`text-[#202F3A] font-semibold text-base`}>
+                  Suppliers
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={tw`bg-[#EEF3F6] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
+              <TouchableOpacity
+                style={tw`bg-[#EEF3F6] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
                 <Text style={tw`text-[#202F3A] font-semibold text-base`}>
-                Suppliers
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={tw`bg-[#EEF3F6] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
-                <Text style={tw`text-[#202F3A] font-semibold text-base`}>
-                Add new
+                  Add new
                 </Text>
               </TouchableOpacity>
             </View>
@@ -201,15 +214,58 @@ const TabsscreenHeader: React.FC<HeaderProps> = ({
               </View>
             </View>
 
-
             <TouchableOpacity
               style={tw`bg-[#FF8858] flex flex-row items-center justify-center p-3 rounded-sm mt-8`}>
-             
               <Text style={tw`text-white text-[16px] font-medium ml-2`}>
-              Add selected
+                Add selected
               </Text>
             </TouchableOpacity>
-       
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        visible={taskseetingmodal}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => settaskseetingmodal(false)}>
+        <View style={tw`flex-1 justify-end items-start `}>
+          <View
+            style={tw`bg-white border border-[#F9FBFB] shadow-lg p-5 rounded-t-3xl w-full`}>
+            <View style={tw`flex flex-row items-center  justify-between`}>
+              <Text style={tw` text-[#A8B4B7] font-semibold text-sm`}>
+              Task settings
+              </Text>
+              <TouchableOpacity onPress={() => settaskseetingmodal(false)}>
+                <Text style={tw`text-xl text-[#A8B4B7]`}>✖</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={tw`mt-4`}>
+              <TouchableOpacity style={tw`my-2`}>
+                <Text style={tw`text-[#374957] text-[16px] font-medium`}>Manage members</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={tw`my-2 border-b-2 pb-4 border-[#EEF3F6]`}>
+                <Text style={tw`text-[#374957] text-[16px] font-medium`}>Settings</Text>
+              </TouchableOpacity>
+
+
+
+              <TouchableOpacity style={tw`my-2`}>
+                <Text style={tw`text-[#374957] text-[16px] font-medium`}>Share ...</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={tw`my-2`}>
+                <Text style={tw`text-[#374957] text-[16px] font-medium`}>Rename</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={tw`my-2 border-b-2 pb-4 border-[#EEF3F6]`}>
+                <Text style={tw`text-[#374957] text-[16px] font-medium`}>Move</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={tw`my-2`}>
+                <Text style={tw`text-[#FF3743] text-[16px] font-medium`}>Archive</Text>
+              </TouchableOpacity>
+            </View>
+
+
           </View>
         </View>
       </Modal>
