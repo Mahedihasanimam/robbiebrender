@@ -25,6 +25,7 @@ import Quotes from './chatingTabs/Quotes';
 import Invoices from './chatingTabs/Invoices';
 import Some from './chatingTabs/Some';
 import TabsscreenHeader from '../components/TabsscreenHeader';
+import {Picker} from 'react-native-ui-lib';
 
 interface Message {
   id: string;
@@ -40,7 +41,10 @@ const ChatingScreen: React.FC = () => {
   const [newMessage, setNewMessage] = useState<string>('');
   const [selectedUser, setSelectedUser] = useState<string>('John');
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [NewchatmodalVisible, setcreatechatModalVisible] = useState<boolean>(false);
+  const [NewchatmodalVisible, setcreatechatModalVisible] =
+    useState<boolean>(false);
+  const [selectedRole, setSelectedRole] = React.useState('');
+  const [invitemember, setInvitemember] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>('Chat');
   const [isChecked, setIsChecked] = useState(false);
   const flatListRef = useRef<FlatList>(null);
@@ -72,6 +76,11 @@ const ChatingScreen: React.FC = () => {
   const hndlecreatechat = () => {
     setModalVisible(false);
     setcreatechatModalVisible(true);
+  };
+
+  const handleinvitemember = () => {
+    setcreatechatModalVisible(false);
+    setInvitemember(true);
   };
 
   const renderItem = ({item}: {item: Message}) => (
@@ -163,6 +172,9 @@ const ChatingScreen: React.FC = () => {
               </TouchableOpacity>
             </View>
           </View>
+          <TouchableOpacity style={tw`absolute bottom-0 left-0`}>
+        <SvgXml xml={EditIcon} />
+      </TouchableOpacity>
         </View>
       )}
 
@@ -216,6 +228,80 @@ const ChatingScreen: React.FC = () => {
                   Archive chat
                 </Text>
               </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        visible={invitemember}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setInvitemember(false)}>
+        <View style={tw`flex-1 justify-end items-start `}>
+          <View
+            style={tw`bg-white border border-[#F9FBFB] shadow-lg p-5 rounded-t-3xl w-full`}>
+            <View style={tw`flex flex-row items-center  justify-between`}>
+              <Text style={tw` text-[#A8B4B7] font-semibold text-sm`}>
+                Quick Invitation
+              </Text>
+              <TouchableOpacity onPress={() => setInvitemember(false)}>
+                <Text style={tw`text-2xl text-[#202F3A]`}>✖</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={tw`flex flex-row items-center justify-center gap-4`}>
+              <TouchableOpacity
+                style={tw`bg-[#374957] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
+                <Text style={tw`text-white font-semibold text-base`}>Team</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={tw`bg-[#EEF3F6] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
+                <Text style={tw`text-[#202F3A] font-semibold text-base`}>
+                  Suppliers
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={tw`bg-[#EEF3F6] p-2 rounded-md mt-6 border border-[#F9FBFB] w-[30%] flex flex-row items-center justify-center`}>
+                <Text style={tw`text-[#202F3A] font-semibold text-base`}>
+                  Add new
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={tw`mt-6`}>
+              <View>
+                <Text style={tw`text-[#374957] text-sm font-normal`}>
+                  Email
+                </Text>
+                <TextInput
+                  placeholder="Type their email here "
+                  style={tw`border-b border-[#C6D0D2]`}
+                />
+              </View>
+
+              <View style={tw`mt-8`}>
+                <Picker
+                  label="Choose their role"
+                  value={selectedRole}
+                  onChange={itemValue => setSelectedRole(itemValue)}
+                  style={tw`border-b border-[#C6D0D2] pb-2 pl-2 `}>
+                  <Picker.Item label="Member" value="member" />
+                  <Picker.Item label="Admin" value="admin" />
+                  <Picker.Item label="Guest" value="guest" />
+                </Picker>
+              </View>
+
+              <View>
+                <TouchableOpacity
+                  style={tw`bg-[#FF8858] p-4 rounded-sm mt-8 flex flex-row items-center justify-center`}>
+                  <Text style={tw`text-white font-semibold text-[16px]`}>
+                    Sen invitation to join
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+
             </View>
           </View>
         </View>
@@ -304,19 +390,20 @@ const ChatingScreen: React.FC = () => {
               </View>
             </View>
 
-
             <TouchableOpacity
               style={tw`bg-[#FF8858] flex flex-row items-center justify-center p-3 rounded-sm mt-8`}>
-             
               <Text style={tw`text-white text-[16px] font-medium ml-2`}>
-              Create chat
+                Create chat
               </Text>
             </TouchableOpacity>
+
+            {/* INVITATION MODAL HANDLER --------------------- */}
             <TouchableOpacity
+              onPress={handleinvitemember}
               style={tw` flex flex-row items-center justify-center p-3 rounded-sm mt-4`}>
               <SvgXml xml={UserPlus} />
               <Text style={tw`text-[#FF8858] text-[16px] font-medium ml-2`}>
-              Invite new member
+                Invite new member
               </Text>
             </TouchableOpacity>
           </View>
@@ -324,9 +411,7 @@ const ChatingScreen: React.FC = () => {
       </Modal>
 
       {/* Floating Edit Button */}
-      <TouchableOpacity style={tw`absolute bottom-0 left-0`}>
-        <SvgXml xml={EditIcon} />
-      </TouchableOpacity>
+      
     </View>
   );
 };

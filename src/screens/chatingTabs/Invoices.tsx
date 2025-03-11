@@ -4,7 +4,7 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import tw from 'twrnc';
 import {SvgXml} from 'react-native-svg';
-import {Combine, downArrowIcon, saveicon, Variation} from '../../assets/Icons';
+import {Combine, downArrowIcon, EditIcon, saveicon, Variation} from '../../assets/Icons';
 import { useNavigation } from '@react-navigation/native';
 
 const invioice = [
@@ -72,6 +72,9 @@ const Invoices = () => {
          
         )}
       />
+      <TouchableOpacity style={tw`absolute bottom-0 left-0`}>
+              <SvgXml xml={EditIcon} />
+            </TouchableOpacity>
     </GestureHandlerRootView>
   );
 };

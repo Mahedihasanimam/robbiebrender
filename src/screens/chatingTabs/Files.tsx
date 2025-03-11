@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { FileIcon } from '../../assets/Icons';
+import { EditIcon, FileIcon } from '../../assets/Icons';
+import tw from '../../lib/tailwind';
 
 
 interface FileItem {
@@ -51,6 +52,9 @@ const Files: React.FC = () => {
           </TouchableOpacity>
         )}
       />
+      <TouchableOpacity style={tw`absolute bottom-0 left-0`}>
+              <SvgXml xml={EditIcon} />
+            </TouchableOpacity>
     </View>
   );
 };

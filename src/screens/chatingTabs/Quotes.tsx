@@ -4,7 +4,7 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import tw from 'twrnc';
 import {SvgXml} from 'react-native-svg';
-import {Combine, downArrowIcon, saveicon, Variation} from '../../assets/Icons';
+import {Combine, downArrowIcon, EditIcon, saveicon, Variation} from '../../assets/Icons';
 
 const quotes = [
   {
@@ -81,17 +81,17 @@ const Quotes = () => {
               </TouchableOpacity>
               </View>
               <Text style={tw`text-xl font-bold my-2`}>{item.price}</Text>
-
               <View style={tw`flex flex-row justify-between items-center`}>
-
               <Text style={tw`text-sm font-normal text-[#84909A]`}>{item.company}</Text>
-            
               <Text style={tw`text-sm font-semibold text-[#FF3743] mt-2`}>{item.dueDate}</Text>
               </View>
             </View>
           </Swipeable>
         )}
       />
+      <TouchableOpacity style={tw`absolute bottom-0 left-0`}>
+              <SvgXml xml={EditIcon} />
+            </TouchableOpacity>
     </GestureHandlerRootView>
   );
 };
