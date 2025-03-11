@@ -118,7 +118,7 @@ const ChatingScreen: React.FC = () => {
         ))}
       </View>
 
-      {/* Tab Content */}
+      {/* Tab Content */} 
       {activeTab === 'Chat' && (
         <FlatList
           ref={flatListRef}

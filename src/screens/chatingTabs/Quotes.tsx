@@ -1,10 +1,17 @@
 import React from 'react';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, Modal, TextInput} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import tw from 'twrnc';
 import {SvgXml} from 'react-native-svg';
-import {Combine, downArrowIcon, EditIcon, saveicon, Variation} from '../../assets/Icons';
+import {
+  Combine,
+  downArrowIcon,
+  EditIcon,
+  saveicon,
+  Variation,
+} from '../../assets/Icons';
+import { Picker } from 'react-native-ui-lib';
 
 const quotes = [
   {
@@ -62,11 +69,17 @@ const renderRightActions = () => (
 );
 
 const Quotes = () => {
+
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState('');
   return (
     <GestureHandlerRootView style={tw`flex-1 bg-gray-100 p-4`}>
-      <View style={tw`flex flex-row items-center justify-between bg-white p-2 mb-4 rounded-lg`} >
-        <Text style={tw`text-[16px] text-[#374957] font-bold mb-4`}>Supplier Quotes </Text>
-        <SvgXml xml={downArrowIcon}/>
+      <View
+        style={tw`flex flex-row items-center justify-between bg-white p-2 mb-4 rounded-lg`}>
+        <Text style={tw`text-[16px] text-[#374957] font-bold mb-4`}>
+          Supplier Quotes{' '}
+        </Text>
+        <SvgXml xml={downArrowIcon} />
       </View>
       <FlatList
         data={quotes}
@@ -75,23 +88,110 @@ const Quotes = () => {
           <Swipeable renderRightActions={renderRightActions}>
             <View style={tw`bg-white p-4 rounded-lg mb-3 shadow-md`}>
               <View style={tw`flex flex-row items-center justify-between`}>
-              <Text style={tw`text-lg font-bold`}>{item.title}</Text>
-              <TouchableOpacity style={tw` ${item?.status === 'Pending' ? 'bg-gray-200' : item.status === 'Approved' ? 'bg-[#F0FFED]' : 'bg-[#FFF0F0]'} py-2 px-4 rounded-sm `}>
-                <Text style={tw` font-bold ${item?.status === 'Pending' ? 'text-[#84909A]' : item.status === 'Approved' ? 'text-[#0FAB31]' : 'text-[#FF3743]'}`}>{item.status}</Text>
-              </TouchableOpacity>
+                <Text style={tw`text-lg font-bold`}>{item.title}</Text>
+                <TouchableOpacity
+                  style={tw` ${
+                    item?.status === 'Pending'
+                      ? 'bg-gray-200'
+                      : item.status === 'Approved'
+                      ? 'bg-[#F0FFED]'
+                      : 'bg-[#FFF0F0]'
+                  } py-2 px-4 rounded-sm `}>
+                  <Text
+                    style={tw` font-bold ${
+                      item?.status === 'Pending'
+                        ? 'text-[#84909A]'
+                        : item.status === 'Approved'
+                        ? 'text-[#0FAB31]'
+                        : 'text-[#FF3743]'
+                    }`}>
+                    {item.status}
+                  </Text>
+                </TouchableOpacity>
               </View>
               <Text style={tw`text-xl font-bold my-2`}>{item.price}</Text>
               <View style={tw`flex flex-row justify-between items-center`}>
-              <Text style={tw`text-sm font-normal text-[#84909A]`}>{item.company}</Text>
-              <Text style={tw`text-sm font-semibold text-[#FF3743] mt-2`}>{item.dueDate}</Text>
+                <Text style={tw`text-sm font-normal text-[#84909A]`}>
+                  {item.company}
+                </Text>
+                <Text style={tw`text-sm font-semibold text-[#FF3743] mt-2`}>
+                  {item.dueDate}
+                </Text>
               </View>
             </View>
           </Swipeable>
         )}
       />
-      <TouchableOpacity style={tw`absolute bottom-0 left-0`}>
-              <SvgXml xml={EditIcon} />
-            </TouchableOpacity>
+      <TouchableOpacity onPress={() => setModalVisible(true)} style={tw`absolute bottom-0 left-0`}>
+        <SvgXml xml={EditIcon} />
+      </TouchableOpacity>
+
+      <Modal
+        visible={modalVisible}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setModalVisible(false)}>
+        <View style={tw`flex-1 justify-end items-start bg-[#858585] `}>
+          <View
+            style={tw`bg-white border border-[#F9FBFB] shadow-lg p-5 rounded-t-3xl w-full`}>
+            <View style={tw`flex flex-row items-center  justify-between`}>
+              <Text style={tw` text-[#A8B4B7] font-semibold text-sm`}>
+              New quote
+              </Text>
+              <TouchableOpacity onPress={() => setModalVisible(false)}>
+                <Text style={tw`text-2xl text-[#202F3A]`}>✖</Text>
+              </TouchableOpacity>
+            </View>
+
+        
+
+            <View style={tw`mt-6`}>
+              <View>
+                <Text style={tw`text-[#374957] text-sm font-normal`}>
+                Send quote to
+                </Text>
+                <TextInput
+                  placeholder="Type name or email here"
+                  style={tw`border-b border-[#C6D0D2]`}
+                />
+              </View>
+              <View>
+                <Text style={tw`text-[#374957] text-sm font-normal`}>
+                Reference
+                </Text>
+                <TextInput
+                  placeholder="Address or any reference describing the job"
+                  style={tw`border-b border-[#C6D0D2]`}
+                />
+              </View>
+
+              <View style={tw`mt-8`}>
+                <Picker
+                  label="Add to task"
+                  value={selectedValue}
+                  onChange={itemValue => setSelectedValue(itemValue)}
+                  style={tw`border-b border-[#C6D0D2] pb-2 pl-2 `}>
+                  <Picker.Item label="Bathrooms & Plumbing" value="Bathrooms & Plumbing" />
+                  <Picker.Item label="Bathrooms & Plumbing" value="Bathrooms & Plumbing" />
+                  <Picker.Item label="Bathrooms & Plumbing" value="Bathrooms & Plumbing" />
+                </Picker>
+              </View>
+
+              <View>
+                <TouchableOpacity
+                  style={tw`bg-[#FF8858] p-4 rounded-sm mt-8 flex flex-row items-center justify-center`}>
+                  <Text style={tw`text-white font-semibold text-[16px]`}>
+                    Sen invitation to join
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+
+            </View>
+          </View>
+        </View>
+      </Modal>
+
     </GestureHandlerRootView>
   );
 };
