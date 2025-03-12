@@ -26,7 +26,7 @@ const MainScreenHeader: React.FC = () => {
       {/* Logo */}
 
       <View>
-        <Image source={require('../assets/images/Logo.png')} />
+        <Image source={require('../assets/images/RyaLogo.png')} />
       </View>
 
       

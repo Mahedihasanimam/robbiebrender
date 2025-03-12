@@ -12,6 +12,9 @@ import MenuItem from "../components/MenuItem";
 import ChatingScreen from "../screens/ChatingScreen";
 import InvoiceDetails from "../screens/chatingTabs/InvoiceDetails";
 import CreateNewQuots from "../screens/chatingTabs/quots/CreateNewQuots";
+import QuotsDetails from "../screens/chatingTabs/quots/QuotsDetails";
+import Login from "../screens/auth/Login/Login";
+import ForgetPassword from "../screens/auth/Login/ForgetPassword";
 
 
 
@@ -31,9 +34,13 @@ const AuthStack = () => (
     initialRouteName="SplashScreen"
   >
     <Stack.Screen name="SplashScreen" component={SplashScreen} />
+    <Stack.Screen name="LoginScreen" component={Login} />
+    <Stack.Screen name="Forgetpassword" component={ForgetPassword} />
     <Stack.Screen name="HomeScreen" component={HomeScreen} />
     <Stack.Screen name="ChatingScreen" component={ChatingScreen} />
     <Stack.Screen name="InvoiceDetails" component={InvoiceDetails} />
+    <Stack.Screen name="Quots Details" component={QuotsDetails} />
+
     <Stack.Screen name="CreateNewQuots" component={CreateNewQuots} />
     <Stack.Screen options={{
     

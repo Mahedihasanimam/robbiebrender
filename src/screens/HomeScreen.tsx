@@ -62,7 +62,7 @@ const HomeScreen = () => {
     setExpanded(prev => ({...prev, [id]: !prev[id]}));
   };
 
-  // Render a single project card
+  
 
   return (
     <View style={tw`flex-1 h-full bg-[#F2F6F8] relative`}>

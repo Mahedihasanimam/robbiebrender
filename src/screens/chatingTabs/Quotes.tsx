@@ -93,8 +93,8 @@ const Quotes = () => {
         data={quotes}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <Swipeable renderRightActions={renderRightActions}>
-            <View style={tw`bg-white p-4 rounded-lg mb-3 shadow-md`}>
+          <Swipeable  renderRightActions={renderRightActions}>
+            <TouchableOpacity onPress={()=>Navigation.navigate('Quots Details')} style={tw`bg-white p-4 rounded-lg mb-3 shadow-md`}>
               <View style={tw`flex flex-row items-center justify-between`}>
                 <Text style={tw`text-lg font-bold`}>{item.title}</Text>
                 <TouchableOpacity
@@ -126,7 +126,7 @@ const Quotes = () => {
                   {item.dueDate}
                 </Text>
               </View>
-            </View>
+            </TouchableOpacity>
           </Swipeable>
         )}
       />

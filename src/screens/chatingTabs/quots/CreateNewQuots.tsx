@@ -289,8 +289,6 @@ const CreateNewQuots = () => {
             <Text style={tw` font-bold text-[20px] mt-1 text-[#222325]`}>
               Quote total: $ ${(totalPrice + 300).toFixed(2)}
             </Text>
-
-       
           </View>
         </View>
 

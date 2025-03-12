@@ -26,7 +26,7 @@ const  SplashScreen = () => {
         style={styles.container}
         entering={FadeIn.duration(1000)}
         exiting={FadeOut.duration(1000).withCallback(() =>
-          runOnJS(navigation.replace)('HomeScreen'),
+          runOnJS(navigation.replace)('LoginScreen'),
         )}
       >
         <Image source={logo} style={styles.logo} resizeMode="contain" />
