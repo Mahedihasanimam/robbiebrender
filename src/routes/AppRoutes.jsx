@@ -11,6 +11,7 @@ import Notification from "../screens/Notification";
 import MenuItem from "../components/MenuItem";
 import ChatingScreen from "../screens/ChatingScreen";
 import InvoiceDetails from "../screens/chatingTabs/InvoiceDetails";
+import CreateNewQuots from "../screens/chatingTabs/quots/CreateNewQuots";
 
 
 
@@ -33,6 +34,7 @@ const AuthStack = () => (
     <Stack.Screen name="HomeScreen" component={HomeScreen} />
     <Stack.Screen name="ChatingScreen" component={ChatingScreen} />
     <Stack.Screen name="InvoiceDetails" component={InvoiceDetails} />
+    <Stack.Screen name="CreateNewQuots" component={CreateNewQuots} />
     <Stack.Screen options={{
     
       animation: "slide_from_left",

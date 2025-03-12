@@ -12,6 +12,7 @@ import {
   Variation,
 } from '../../assets/Icons';
 import { Picker } from 'react-native-ui-lib';
+import { useNavigation } from '@react-navigation/native';
 
 const quotes = [
   {
@@ -70,8 +71,15 @@ const renderRightActions = () => (
 
 const Quotes = () => {
 
-  const [modalVisible, setModalVisible] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState('');
+  const [createModal, setcreatemodalvisiblle] = React.useState <boolean> (false);
+  const [selectedValue, setSelectedValue] = React.useState<string> ('Bathrooms & Plumbing');
+  const Navigation = useNavigation<any>();
+
+
+  const handleprocedline = ()=>{
+    setcreatemodalvisiblle(false)
+    Navigation.navigate('CreateNewQuots')
+  }
   return (
     <GestureHandlerRootView style={tw`flex-1 bg-gray-100 p-4`}>
       <View
@@ -122,15 +130,15 @@ const Quotes = () => {
           </Swipeable>
         )}
       />
-      <TouchableOpacity onPress={() => setModalVisible(true)} style={tw`absolute bottom-0 left-0`}>
+      <TouchableOpacity onPress={() => setcreatemodalvisiblle(true)} style={tw`absolute bottom-0 left-0`}>
         <SvgXml xml={EditIcon} />
       </TouchableOpacity>
 
       <Modal
-        visible={modalVisible}
+        visible={createModal}
         transparent
         animationType="slide"
-        onRequestClose={() => setModalVisible(false)}>
+        onRequestClose={() => setcreatemodalvisiblle(false)}>
         <View style={tw`flex-1 justify-end items-start bg-[#858585] `}>
           <View
             style={tw`bg-white border border-[#F9FBFB] shadow-lg p-5 rounded-t-3xl w-full`}>
@@ -138,7 +146,7 @@ const Quotes = () => {
               <Text style={tw` text-[#A8B4B7] font-semibold text-sm`}>
               New quote
               </Text>
-              <TouchableOpacity onPress={() => setModalVisible(false)}>
+              <TouchableOpacity onPress={() => setcreatemodalvisiblle(false)}>
                 <Text style={tw`text-2xl text-[#202F3A]`}>✖</Text>
               </TouchableOpacity>
             </View>
@@ -155,8 +163,8 @@ const Quotes = () => {
                   style={tw`border-b border-[#C6D0D2]`}
                 />
               </View>
-              <View>
-                <Text style={tw`text-[#374957] text-sm font-normal`}>
+              <View style={tw`mt-6`}>
+                <Text style={tw`text -[#374957] text-sm font-normal`}>
                 Reference
                 </Text>
                 <TextInput
@@ -172,16 +180,17 @@ const Quotes = () => {
                   onChange={itemValue => setSelectedValue(itemValue)}
                   style={tw`border-b border-[#C6D0D2] pb-2 pl-2 `}>
                   <Picker.Item label="Bathrooms & Plumbing" value="Bathrooms & Plumbing" />
-                  <Picker.Item label="Bathrooms & Plumbing" value="Bathrooms & Plumbing" />
-                  <Picker.Item label="Bathrooms & Plumbing" value="Bathrooms & Plumbing" />
+                  <Picker.Item label="Bathrooms & plumber" value="Bathrooms & plumber" />
+                  <Picker.Item label="Bathrooms & construction" value="Bathrooms & construction" />
                 </Picker>
               </View>
 
               <View>
                 <TouchableOpacity
+                  onPress={handleprocedline}
                   style={tw`bg-[#FF8858] p-4 rounded-sm mt-8 flex flex-row items-center justify-center`}>
                   <Text style={tw`text-white font-semibold text-[16px]`}>
-                    Sen invitation to join
+                  Proceed to line items
                   </Text>
                 </TouchableOpacity>
               </View>
