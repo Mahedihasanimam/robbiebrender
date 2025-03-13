@@ -31,9 +31,12 @@ const Login = ({ navigation }) => {
                     </View>
 
                     <View>
+                        <View style={tw`mt-12`}>
+
                         <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')} >
-                            <Text style={tw`text-[#FFFFFF] text-[16px] font-semibold bg-[#FF8858] w-[200px] mx-auto rounded-md mt-12 p-4 text-center`}>Login</Text>
+                            <Text style={tw`text-[#FFFFFF] text-[16px] font-semibold bg-[#FF8858] w-[200px] mx-auto rounded-md  p-4 text-center`}>Login</Text>
                         </TouchableOpacity>
+                        </View>
                         <TouchableOpacity >
                             <Text style={tw` text-[#8A91A0] text-center pt-6 text-[16px]`}>Or login with </Text>
                         </TouchableOpacity>

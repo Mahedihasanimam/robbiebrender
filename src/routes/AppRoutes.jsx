@@ -15,6 +15,7 @@ import CreateNewQuots from "../screens/chatingTabs/quots/CreateNewQuots";
 import QuotsDetails from "../screens/chatingTabs/quots/QuotsDetails";
 import Login from "../screens/auth/Login/Login";
 import ForgetPassword from "../screens/auth/Login/ForgetPassword";
+import Seeting from "../screens/seeting/Seeting";
 
 
 
@@ -27,7 +28,7 @@ const AuthStack = () => (
     screenOptions={{
       headerShown: false,
       statusBarAnimation: "fade",
-      statusBarBackgroundColor: "#19578F",
+      statusBarBackgroundColor: "#FF8858",
       statusBarStyle: "light",
       animation: "slide_from_right",
     }}
@@ -37,6 +38,7 @@ const AuthStack = () => (
     <Stack.Screen name="LoginScreen" component={Login} />
     <Stack.Screen name="Forgetpassword" component={ForgetPassword} />
     <Stack.Screen name="HomeScreen" component={HomeScreen} />
+    <Stack.Screen name="Settings" component={Seeting} />
     <Stack.Screen name="ChatingScreen" component={ChatingScreen} />
     <Stack.Screen name="InvoiceDetails" component={InvoiceDetails} />
     <Stack.Screen name="Quots Details" component={QuotsDetails} />

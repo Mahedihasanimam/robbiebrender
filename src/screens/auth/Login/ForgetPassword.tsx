@@ -24,9 +24,9 @@ const ForgetPassword = () => {
                         <TextInput placeholder='Email' style={tw`bg-[#EEF3F6] w-full rounded-md p-4 text-[16px] font-normal text-[#374957]`} />
                     </View>
 
-                    <View>
+                    <View style={tw`mt-12 `}>
                         <TouchableOpacity onPress={()=>navigation.navigate('HomeScreen')} >
-                            <Text style={tw`text-[#FFFFFF] text-[16px] font-semibold bg-[#FF8858] w-[250px] mx-auto rounded-md mt-12 p-4 text-center`}>Submit</Text>
+                            <Text style={tw`text-[#FFFFFF] text-[16px] font-semibold bg-[#FF8858] w-[250px] mx-auto rounded-md p-4 text-center`}>Submit</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
