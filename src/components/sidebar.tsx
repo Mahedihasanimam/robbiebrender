@@ -75,7 +75,7 @@ const Sidebar: React.FC = () => {
               navigation?.navigate('Notifications');
               }
               else if (item === 'Invite members') {
-                navigation?.navigate('Invite members');
+                navigation?.navigate('invitemember');
               }
               else if (item === 'Settings') {
                 navigation?.navigate('Settings');

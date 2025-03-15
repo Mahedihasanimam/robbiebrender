@@ -16,6 +16,7 @@ import QuotsDetails from "../screens/chatingTabs/quots/QuotsDetails";
 import Login from "../screens/auth/Login/Login";
 import ForgetPassword from "../screens/auth/Login/ForgetPassword";
 import Seeting from "../screens/seeting/Seeting";
+import InviteMembers from "../screens/invitemembers/InviteMembers";
 
 
 
@@ -44,12 +45,8 @@ const AuthStack = () => (
     <Stack.Screen name="Quots Details" component={QuotsDetails} />
 
     <Stack.Screen name="CreateNewQuots" component={CreateNewQuots} />
-    <Stack.Screen options={{
-    
-      animation: "slide_from_left",
-    presentation : "transparentModal",
-      
-    }} name="Notifications" component={Notification} />
+    <Stack.Screen options={{animation: "slide_from_left",presentation : "transparentModal",}} name="Notifications" component={Notification} />
+    <Stack.Screen options={{animation: "slide_from_bottom",presentation : "transparentModal",}} name="invitemember" component={InviteMembers} />
   
    
   </Stack.Navigator>

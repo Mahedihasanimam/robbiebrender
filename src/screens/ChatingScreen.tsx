@@ -233,6 +233,8 @@ const ChatingScreen: React.FC = () => {
         </View>
       </Modal>
 
+
+      {/* inivitation modal */}
       <Modal
         visible={invitemember}
         transparent
