@@ -172,7 +172,7 @@ const ChatingScreen: React.FC = () => {
               </TouchableOpacity>
             </View>
           </View>
-          <TouchableOpacity style={tw`absolute bottom-0 left-0`}>
+          <TouchableOpacity onPress={() => hndlecreatechat()} style={tw`absolute bottom-0 left-0`}>
         <SvgXml xml={EditIcon} />
       </TouchableOpacity>
         </View>
