@@ -5,6 +5,8 @@ import tw from '../../lib/tailwind';
 import { SvgXml } from 'react-native-svg';
 import { keyicon } from '../../assets/Icons';
 import { ScrollView } from 'react-native-gesture-handler';
+import NotificationPage from '../notification/NotificationPage';
+import YouandYourbusiness from '../You & Your business/YouandYourbusiness';
 
 const CustomDropdown = ({ selectedValue, onValueChange, options }) => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -41,18 +43,15 @@ const Settings = () => {
     const [quoteApproved, setQuoteApproved] = useState(true);
     const [autoPay, setAutoPay] = useState(true);
     const [timezone, setTimezone] = useState('UTC+10:00: Australian Eastern Standard Time');
-
-
-
-
-
     return (
         <ScrollView style={tw`bg-[#E1E7EA]`}>
             <View style={tw`px-4`}>
                 <ChatingHeader setSelectedSection={setSelectedSection} selectedSection={selectedSection} />
             </View>
 
-            <View style={tw`p-4 bg-white mt-4`}>
+
+            {
+                selectedSection === 'Main settings' && <View style={tw`p-4 bg-white mt-4`}>
 
                 <View style={tw`mb-4`}>
 
@@ -135,6 +134,20 @@ const Settings = () => {
                     options={["UTC+10:00: Australian Eastern Standard Time"]}
                 />
             </View>
+            }
+            <View style={tw`p-4 bg-white mt-4`}>
+            {
+                selectedSection === "Notifications" && <View>
+                    <NotificationPage/>
+                </View>
+            }
+            {
+                selectedSection === "You & Your business" && <View>
+                   <YouandYourbusiness/>
+                </View>
+            }
+            </View>
+
         </ScrollView>
     );
 };
